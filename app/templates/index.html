@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevOps Todo App</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            text-align: center;
+            font-size: 2.5em;
+        }
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 0.9em;
+        }
+        .add-todo {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+        input[type="text"] {
+            flex: 1;
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        button {
+            padding: 15px 30px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background: #5568d3;
+            transform: translateY(-2px);
+        }
+        .todo-list {
+            list-style: none;
+        }
+        .todo-item {
+            background: #f8f9fa;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: transform 0.2s;
+            border-left: 4px solid #667eea;
+        }
+        .todo-item:hover {
+            transform: translateX(5px);
+        }
+        .todo-item.completed {
+            opacity: 0.6;
+            text-decoration: line-through;
+            border-left-color: #28a745;
+        }
+        .todo-text {
+            flex: 1;
+        }
+        .todo-text strong {
+            font-size: 1.1em;
+            color: #333;
+            display: block;
+            margin-bottom: 5px;
+        }
+        .todo-text small {
+            color: #999;
+            font-size: 0.85em;
+        }
+        .todo-actions {
+            display: flex;
+            gap: 10px;
+        }
+        .todo-actions a {
+            text-decoration: none;
+        }
+        .btn-complete {
+            background: #28a745;
+            padding: 10px 20px;
+            font-size: 14px;
+            border-radius: 5px;
+        }
+        .btn-complete:hover {
+            background: #218838;
+        }
+        .btn-delete {
+            background: #dc3545;
+            padding: 10px 20px;
+            font-size: 14px;
+            border-radius: 5px;
+        }
+        .btn-delete:hover {
+            background: #c82333;
+        }
+        .empty-state {
+            text-align: center;
+            color: #999;
+            padding: 60px 20px;
+            font-size: 1.2em;
+        }
+        .empty-state::before {
+            content: "📝";
+            display: block;
+            font-size: 4em;
+            margin-bottom: 20px;
+        }
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #f0f0f0;
+            border-radius: 10px;
+        }
+        .stat {
+            text-align: center;
+        }
+        .stat-number {
+            font-size: 2em;
+            font-weight: bold;
+            color: #667eea;
+        }
+        .stat-label {
+            color: #666;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📝 DevOps Todo Application</h1>
+        <p class="subtitle">Your Complete CI/CD Project</p>
+        
+        {% if todos %}
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-number">{{ todos|length }}</div>
+                <div class="stat-label">Total Tasks</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">{{ todos|selectattr('completed')|list|length }}</div>
+                <div class="stat-label">Completed</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">{{ todos|rejectattr('completed')|list|length }}</div>
+                <div class="stat-label">Pending</div>
+            </div>
+        </div>
+        {% endif %}
+        
+        <form action="/add" method="POST" class="add-todo">
+            <input type="text" name="todo" placeholder="Enter a new todo task..." required autofocus>
+            <button type="submit">➕ Add Todo</button>
+        </form>
+
+        {% if todos %}
+        <ul class="todo-list">
+            {% for todo in todos %}
+            <li class="todo-item {% if todo.completed %}completed{% endif %}">
+                <div class="todo-text">
+                    <strong>{{ todo.text }}</strong>
+                    <small>Created: {{ todo.created_at }}</small>
+                </div>
+                <div class="todo-actions">
+                    {% if not todo.completed %}
+                    <a href="/complete/{{ todo.id }}">
+                        <button class="btn-complete">✓ Complete</button>
+                    </a>
+                    {% endif %}
+                    <a href="/delete/{{ todo.id }}">
+                        <button class="btn-delete">🗑 Delete</button>
+                    </a>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <div class="empty-state">
+            <p>No todos yet! Add your first task above to get started.</p>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
