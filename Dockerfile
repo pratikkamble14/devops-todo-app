@@ -24,7 +24,7 @@ COPY app/ ./app/
 
 # Copy tests and configuration files
 COPY tests/ ./tests/
-COPY pytest.ini .
+# COPY pytest.ini .
 
 # Create directory for data persistence
 RUN mkdir -p /app/data
