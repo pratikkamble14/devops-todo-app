@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: todo-app
+    env: docker
+    dockerfilePath: Dockerfile       # explicitly tell Render where the Dockerfile is
+    autoDeploy: true                 # automatically deploy on each push
+    plan: free
+    healthCheckPath: /health
+    envVars:
+      - key: FLASK_APP
+        value: app/app.py
+      - key: FLASK_ENV
+        value: production
