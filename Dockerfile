@@ -1,9 +1,9 @@
 # Use official Python runtime as base image
 # This is like starting with a clean Linux system with Python pre-installed
-FROM python:3.9-slim
+FROM python:3.12-slim
 
 # Set metadata about the image
-LABEL maintainer="your-email@example.com"
+LABEL maintainer="kamblepratik1404@gmail.com"
 LABEL description="DevOps Todo Application"
 
 # Set working directory inside container
@@ -21,6 +21,10 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy application code
 # Copy app folder and its contents
 COPY app/ ./app/
+
+# Copy tests and configuration files
+COPY tests/ ./tests/
+COPY pytest.ini .
 
 # Create directory for data persistence
 RUN mkdir -p /app/data
