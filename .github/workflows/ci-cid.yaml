@@ -54,3 +54,8 @@ jobs:
         sleep 5
         curl http://localhost:5000/health
         docker stop todo-app-container
+        
+        # Step 7: Clean up
+        # - name: Clean up Docker container
+        #   run: |
+        #   docker rm todo-app-container
