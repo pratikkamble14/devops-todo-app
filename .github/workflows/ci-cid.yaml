@@ -52,7 +52,7 @@ jobs:
 
         docker run -d -p 8081:5000 --name todo-app-container todo-app:${{ github.sha }}
         sleep 5
-        curl http://localhost:5000/health
+        curl http://localhost:8081/health
         docker stop todo-app-container
         
         # Step 7: Clean up
