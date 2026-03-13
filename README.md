@@ -108,11 +108,11 @@ Application is deployed on Render.
 
 #### Login / Registered Page
 
-![Login-Register Screenshot](images/login-register.png)
+ ![Login-Register Screenshot](images/login-register.png)
 
 #### Main Home Page 
 
-![Home Screenshot](images/home.png)
+ ![Home Screenshot](images/home.png)
 ## DevOps Learning Goals
 
 This project helped practice:
