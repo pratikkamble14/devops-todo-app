@@ -65,8 +65,7 @@ Run container
 
     docker run -p 5000:5000 devops-todo-app
 
-<<<<<<<< HEAD:README.MD
-========
+
 ## Deployment
 
 This application is deployed on Render using an automated CI/CD pipeline.
@@ -115,7 +114,7 @@ Application is deployed on Render.
 #### Main Home Page 
 
  ![Home Screenshot](images/home.png)
->>>>>>>> 73c605884852d0ac42415e2852355fbd9d52c773:README.md
+
 ## DevOps Learning Goals
 
 This project helped practice:
