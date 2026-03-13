@@ -41,7 +41,7 @@ Application
 - Render (Cloud Deployment)
 
 ## Project Structure
-    ![Structure Screenshot](images/structure.png)
+   ![Structure Screenshot](images/structure.png)
 ## Getting Started
 
     1) Clone the Repository
@@ -108,7 +108,7 @@ Application is deployed on Render.
 
 #### Login / Registered Page
 
- ![Login-Register Screenshot](images/login-register.png)
+![Login-Register Screenshot](images/login-register.png)
 
 #### Main Home Page 
 
