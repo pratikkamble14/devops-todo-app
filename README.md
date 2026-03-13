@@ -43,7 +43,7 @@ Infrastructure
 - Cloud deployment (AWS / Render / etc if used)
 
 ## Project Structure
-    ![Structure Screenshot](images/structure.png)
+![Structure Screenshot](images/structure.png)
 Getting Started
 
     1) Clone the Repository
