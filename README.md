@@ -3,7 +3,7 @@
 A simple Todo Application built for practicing DevOps concepts.
 This project demonstrates how a basic application can be containerized, deployed, and automated using DevOps tools.
 
-The goal of this project is not just building an app, but learning real DevOps workflow like containerization, CI/CD, and deployment.
+The goal of this project is not just build an app, but learning real DevOps workflow like containerization, CI/CD, and deployment.
 
 ## Project Overview
 
@@ -26,30 +26,27 @@ It is mainly used for learning and practicing DevOps pipelines and deployment wo
 
 ## Tech Stack
 
-Frontend / Backend
+Application
 - Python
-- Flask / Django (change according to your project)
+- Flask
 
-DevOps Tools
-
+ DevOps Tools
 - Docker
 - Git
 - GitHub
-- CI/CD Pipeline
+- GitHub Actions (CI/CD)
 
-Infrastructure
-
+ Infrastructure
 - Linux
-- Cloud deployment (AWS / Render / etc if used)
+- Render (Cloud Deployment)
 
 ## Project Structure
-![Structure Screenshot](images/structure.png)
-
-Getting Started
+    ![Structure Screenshot](images/structure.png)
+## Getting Started
 
     1) Clone the Repository
         git clone https://github.com/pratikkamble14/devops-todo-app.git
-        cd devops-todo-app
+        cd devops-todo-app 
     2 ) Install Dependencies
         pip install -r requirements.txt
     3) Run the Application
@@ -67,6 +64,55 @@ Build the image
 Run container
 
     docker run -p 5000:5000 devops-todo-app
+
+## Deployment
+
+This application is deployed on Render using an automated CI/CD pipeline.
+
+Whenever code is pushed to the GitHub repository, the deployment process runs automatically using GitHub Actions.
+
+Workflow:
+
+    1.Developer pushes code to GitHub
+
+    2.GitHub Actions CI/CD pipeline triggers
+
+    3.Application build process starts
+
+    4.Render automatically deploys the latest version
+
+This ensures continuous integration and continuous deployment for the application.
+
+## CI/CD Pipeline
+
+The project uses GitHub Actions to automate the deployment process.
+
+Example workflow:
+
+    Developer → GitHub Repository → GitHub Actions CI/CD → Render Deployment
+
+This pipeline helps in:
+
+- Automating application deployment
+- Reducing manual deployment steps
+
+- Maintaining consistent production builds
+
+## Live Application
+
+Application is deployed on Render.
+
+    https://devops-todo-app-1.onrender.com
+
+### Appilication 
+
+#### Login / Registered Page
+
+![Login-Register Screenshot](images/login-register.png)
+
+#### Main Home Page 
+
+![Home Screenshot](images/home.png)
 ## DevOps Learning Goals
 
 This project helped practice:
@@ -92,6 +138,6 @@ Pratik Kamble
     GitHub
     https://github.com/pratikkamble14
 
-License
+## License
 
 This project is open source and available under the MIT License.
