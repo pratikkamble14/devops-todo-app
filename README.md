@@ -44,6 +44,7 @@ Infrastructure
 
 ## Project Structure
 ![Structure Screenshot](images/structure.png)
+
 Getting Started
 
     1) Clone the Repository
