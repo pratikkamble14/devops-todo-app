@@ -66,6 +66,7 @@ Build the image
 Run container
 
     docker run -p 5000:5000 devops-todo-app
+
 ## DevOps Learning Goals
 
 This project helped practice:
