@@ -122,7 +122,6 @@ This pipeline helps in:
 |-----------|---------|
 | Cloud | AWS EC2 |
 | Instance | t2.micro (Ubuntu 24.04 LTS) |
-| Elastic IP | 13.201.221.29 |
 | Reverse Proxy | Nginx (port 80) |
 | Container | Docker |
 | Image Registry | Docker Hub |
@@ -130,7 +129,7 @@ This pipeline helps in:
 ## Live Application
 
 Application is deployed on AWS EC2. 
-link : http://13.201.221.29
+link : [http://13.201.221.29](http://13.127.98.96/)
 
 ### Application Screenshots
 
@@ -149,12 +148,10 @@ This project helped practice:
 - CI/CD automation with GitHub Actions
 - AWS EC2 cloud deployment
 - Nginx reverse proxy configuration
-- Elastic IP management
 - Linux server administration
 
 ## Future Improvements
 
-- Add database (PostgreSQL / MySQL)
 - Kubernetes deployment
 - Monitoring with Prometheus + Grafana
 - SSL/HTTPS with Certbot
