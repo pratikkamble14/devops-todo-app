@@ -1,0 +1,28 @@
+kind: ConfigMap
+apiVersion: v1
+metadata: 
+  name: nginx-config
+  namespace: todo-app
+
+data:
+  default.conf: |
+    server {
+        listen 80;
+        listen [::]:80;
+
+        server_name localhost;
+        location = /nginx {
+            root /usr/share/nginx/html;
+            try_files /index.html =404;
+          }
+        location / {
+            root /usr/share/nginx/.html;
+            index index.html index.htm;
+        }
+
+        error_page 500 502 503 504 /50x.html;
+
+        location = /50x.html {
+            root /usr/share/nginx/html;
+        }
+      }
